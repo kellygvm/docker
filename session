@@ -344,6 +344,16 @@ now you are inside that container
 
 docker commit -c 'CMD ["/usr/sbin/httpd","-D","FOREGROUND"]' c0d27abd1cf1
 
+to check within the new container  aft this 
+docker exec -it <containerID> bash 
+cd /usr/sbin/httpd -k start 
+[root@7ef561fd855d sbin]# ./httpd -help
+Usage: ./httpd [-D name] [-d directory] [-f file]
+               [-C "directive"] [-c "directive"]
+               [-k start|restart|graceful|graceful-stop|stop]
+               [-v] [-V] [-h] [-l] [-L] [-t] [-T] [-S] [-X]
+docker commit -c 'CMD ["/usr/sbin/httpd -k start","-D","FOREGROUND"]' c0d27abd1cf1
+
 c0d27abd1cf1 --> container ID
 
 the above commit command will take the snapshot from running container c0d27abd1cf1
